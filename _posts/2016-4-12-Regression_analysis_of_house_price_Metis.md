@@ -3,19 +3,19 @@ layout: post
 title: Estimating House Prices in San Francisco
 ---
 
-##Motivation
+## Motivation
 When we buy a house, we usually don't know exactly which house we are going to buy, but we know what kind of houses we want.
 It is very important to know the price of houses with a specific set of features (size, bathrooms, bedrooms...).
 
 This project is trying to estimate house prices based on the features, using publicly available data.
 
-##Data source
+## Data source
 House sales record: http://www.sfgate.com/webdb/homesales/
 House features: Zillow API. Including Finished square foot, Lot square foot, Number of bedrooms, bathrooms, total rooms, Built year, House type (single family house, condo…)
 and Neighborhood.
 S&P/Case-Shiller house price index: https://research.stlouisfed.org/fred2/series/SFXRSA
 
-###Web scraping of rendered webpage
+### Web scraping of rendered webpage
 The house sales record from sfgate is a rendered webpage. This means I can't get the data by using the method I usually use for web scraping.
 One method to scrape the rendered webpage is to look at the Network tag in Inspect and find the right url of the data.
 But in this case, I had to use PyQt4 package in Python to be able to do the scraping.
@@ -72,7 +72,7 @@ for i in range(1,1000):
 app.exit()
 ```
 
-###Time series analysis
+### Time series analysis
 To analyze all the house sales price base on the features, I need to adjust the houses prices to the same month. Because it is obvious
 the value of a house is different now as it was three years ago.
 In this model, I assumed that in the past three years all the values of the houses had the same increase rate, which followed the same 
@@ -82,7 +82,7 @@ So a simple time series analysis using ARMA (Autoregression moving average) was 
 ARMA is a very basic time series method, it is not a good idea to use it to forecast the house price in the future (after a year or so).
 But for just one step ahead prediction, it gives a very good result.
 
-##Clustering the neighborhood
+## Clustering the neighborhood
 The problem of analyzing the house price is that there were not many house sales. San Francisco has 71 neighborhoods, but some neighborhoods
 only had a few of transitions in a year. Clustering the neighborhoods became a very clear approach.
 
@@ -99,7 +99,7 @@ houses than condos.
 
 ![_config.yml]({{ site.baseurl }}/images/plot22.png)
 
-##Important features
+## Important features
 In randomforest and tree regression, the relative rank of a feature used as a decision node in a tree can be used to assess the relative
 importance of that feature. Features used at the top of the tree have a larger fraction contribution to the final prediction. The expected
 fraction of the sample they contributed to can thus be used as an estimation of the relative importance of the features.
@@ -111,7 +111,7 @@ As we can see, beside the size of the houses neighborhood, built year and the in
 are also very important for both single family houses and condos. Neighborhood plays a really important part in the single family houses
 but less important for condos. 
 
-##Future
+## Future
 It is obvious that some of the important features were not included in my model, such as kitchen, pool, style of the house.
 With more features and more data, better prediction can be made.
 
