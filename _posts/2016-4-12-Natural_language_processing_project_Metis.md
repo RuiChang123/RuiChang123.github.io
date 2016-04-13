@@ -3,11 +3,6 @@ layout: post
 title: Topic modeling of San Francisco
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
-
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
-
 ## Motviation ##
 News is very important. A lot of important decisions are made based on the latest news. With the technology today, we are able to access all kinds of news resource or social media, such as Twitter, SFGate, New York Times, very easily. But the problem is it becomes very unlikely that a person can read all the news everyday in a limited amount of time. And this is why we need machine learning to help us to do the work.
 
