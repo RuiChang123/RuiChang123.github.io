@@ -67,7 +67,7 @@ By giving different number of topics to the model, I could calculate the distanc
 Another way is to visulize the distance between the topics and check if all the topics are well seperated. In python, there is a package called gensimvis (https://github.com/bmabey/pyLDAvis) can do the work for me. The metric used in this package is also JDS and the visulization is made by D3.
 The plot below shows the distance between topics in the case of 10 topics. (the names of the topics were added manually)
 
-![](plot2.png)
+![_config.yml]({{ site.baseurl }}/images/plot2.png)
 
 Actually, in my opinion, there is no correct answer of how many topics there are. When we look at an article in different level (zoom in, zoom out), we can different decisions. So in this case, I chose 10 topics.
 The plot below shows the network of the topics and the top 10 words that are mostly likely show up in each topic.
