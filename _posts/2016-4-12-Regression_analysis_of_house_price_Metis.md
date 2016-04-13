@@ -1,4 +1,7 @@
-#Estimating House Prices in San Francisco
+---
+layout: post
+title: Estimating House Prices in San Francisco
+---
 
 ##Motivation
 When we buy a house, we usually don't know exactly which house we are going to buy, but we know what kind of houses we want.
