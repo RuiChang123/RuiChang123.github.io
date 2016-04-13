@@ -3,16 +3,16 @@ layout: post
 title: Topic modeling of San Francisco
 ---
 
-## Motviation ##
+## Motviation
 News is very important. A lot of important decisions are made based on the latest news. With the technology today, we are able to access all kinds of news resource or social media, such as Twitter, SFGate, New York Times, very easily. But the problem is it becomes very unlikely that a person can read all the news everyday in a limited amount of time. And this is why we need machine learning to help us to do the work.
 
 In this project, I am trying to use topic modeling to capture the evolution of news topics in San Francisco from 2013 to 2015.
 
-## Topic modeling##
+## Topic modeling
 Topic modeling is one of the important subjects of natural language processing. The goal of topic modeling is to capture the topics from a set of documents and cluster the documents by their topics. The basic methods for topic modeling include: LSI (Latent semantic indexing ), NMF (Non-negative matrix factorization), LDA (Latent Dirichlet allocation) and so on.
 Due to the fact that LDA doesn't have to deal with large matrix processing (SVD), it has the fastest process speed and has the most protential to achieve dynametic (real-time) topic modeling. It is also the method that will be used in this project.
 
-## Basic idea of LDA ##
+## Basic idea of LDA 
 The theoretical detail of LDA will not be discussed in this blog. But the basic idea of LDA is that, it assumes a document is characterized by a particular set of topics and a topic is characterized by a distribution of words. Both the topics in a document and words in a topics follow the Dirichlet distribution. For any word in a document, it comes from a Multinomial trail of topics and words.
 By doing LDA analysis, we will be able to get a probability distribution of topics in each document and also a probability distribution of words in each topic.
 
