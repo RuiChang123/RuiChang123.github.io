@@ -64,7 +64,7 @@ The plot below shows the distance between topics in the case of 10 topics. (the 
 
 ![_config.yml]({{ site.baseurl }}/images/plot2.png)
 
-Actually, in my opinion, there is no correct answer of how many topics there are. When we look at an article in different level (zoom in, zoom out), we can different decisions. So in this case, I chose 10 topics.
+Actually, in my opinion, there is no correct answer of how many topics there are. When we look at an article in different level (zoom in, zoom out), we have different decisions. So in this case, I chose 10 topics.
 The plot below shows the network of the topics and the top 10 words that are mostly likely show up in each topic.
 
 ![_config.yml]({{ site.baseurl }}/images/plot3.png)
