@@ -55,15 +55,11 @@ for i in range(1,1000):
     info = soup.find_all('font', {'face':"verdana"})
 
     print i, len(info)
-    #c = 0
     df = pd.DataFrame()
     for e in info:
         time.sleep(1.0)
-        #print c
-        #c += 1
         data = {}
         house = e.text.split(',')
-        #print house
         data['address'] = house[0]
         data['house_info'] = house[1]
         
