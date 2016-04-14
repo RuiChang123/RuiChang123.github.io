@@ -57,9 +57,7 @@ After preprocessing, it is time to do the topic modeling. Python package gensim 
 ### visulizing the topics
 One way to decide the number of topics is to visulize it. There is a alogrithm called t-Distributed Stochastic Neighbor Embedding (t-SNE) (https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) can be applied to this case. 
 t-SNE is usually used to visulize high dimensional data. The idea of this algrithm is to find a distance in a two dimensional space based on the distance between two objects calculated by a specific metric, such as cosine-similarity. In this case, I used Jensen-Shannon divergence as the distance. As mentioned above, the assumption of LDA is that one documents is a distribution of topics. Jensen-Shannon divergence (JSD) is a metric that can be used to calculate the similarity of two distributions (https://en.wikipedia.org/wiki/Jensen–Shannon_divergence)
-By giving different number of topics to the model, I could calculate the distance between all documents and plot them by using t-SNE and check which number makes the most sense. Unfortunately, it was really slow to compute the distances.
-
-Another way is to visulize the distance between the topics and check if all the topics are well seperated. In python, there is a package called gensimvis (https://github.com/bmabey/pyLDAvis) can do the work for me. The metric used in this package is also JDS and the visulization is made by D3.
+By giving different number of topics to the model, I can visulize the distance between the topics and check if all the topics are well seperated. In python, there is a package called gensimvis (https://github.com/bmabey/pyLDAvis) can do the work for me. The metric used in this package is also JDS and the visulization is made by D3.
 The plot below shows the distance between topics in the case of 10 topics. (the names of the topics were added manually)
 
 ![_config.yml]({{ site.baseurl }}/images/plot2.png)
