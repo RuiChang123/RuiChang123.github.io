@@ -11,8 +11,10 @@ This project is trying to estimate house prices based on the features, using pub
 
 ## Data source
 House sales record: http://www.sfgate.com/webdb/homesales/
+
 House features: Zillow API. Including Finished square foot, Lot square foot, Number of bedrooms, bathrooms, total rooms, Built year, House type (single family house, condo…)
 and Neighborhood.
+
 S&P/Case-Shiller house price index: https://research.stlouisfed.org/fred2/series/SFXRSA
 
 ### Web scraping of rendered webpage
