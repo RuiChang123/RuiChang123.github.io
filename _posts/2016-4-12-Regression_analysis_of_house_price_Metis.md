@@ -89,7 +89,7 @@ The result of the clustering is shown as below by usint tableau public.
 
 ![_config.yml]({{ site.baseurl }}/images/plot21.png)
 
-##Regression models
+## Regression models
 After all the prepare, different models were tested. Single family houses and condos were trained seperately.
 The performance of the models were evaluated by cross-validation. (see table below)
 Among all the models, randomforest had the best performance and it is interesting that all the models performed better on single family
