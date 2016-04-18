@@ -18,89 +18,61 @@ By doing LDA analysis, we will be able to get a probability distribution of topi
 
 ## Data source
 The data of this project came from the New York Times API. With time range 2013 to 2015 and search query of San Francisco, about 10300 news articles were obtained.
+Please check the ipython notebook for the code of getting the data ()
 
 ## Preprocessing
-Preprocessing is a very important part of topic modeling. In this project, preprocessing includes tokenizing, filtering numbers and date, filtering stop words, stemming and filtering words in more than 95% or less than 3 of the documents.
-The code for token processing is shown below:
+Preprocessing is a very important part of topic modeling. In this project, preprocessing includes tokenizing, filtering numbers and date, filtering stop words and stemming. I also started with filtering words in more than 75% or less than 10 of the documents.
+During the process of training the model, stop words were updated and different word-filtering parameters were tested.
+The code for token processing is also in the ipython notebook
 
-```python
-def token_process(doc):
-    #stop words
-    stop_en = stopwords.words('english') + [u',',u'.',u'?',u'!',u':',u';', u')', u'(',u'[',u']',u'{',u'}','%',
-                                           'san','francisco','san francisco','new','tr','th','to','on','of','in','at',
-                                           'https','http']
-    #stemming
-    stemmer = SnowballStemmer("english")
-    #tokenize
-    tokens = [w.strip().decode('utf8') for sent in sent_tokenize(doc) for w in word_tokenize(sent)] if doc else None
-    #filter numbers
-    num_pat = re.compile(r'^(-|\+)?(\d*).?(\d+)')
-    tokens = filter(lambda x: not num_pat.match(x), tokens)
-    #filter dates
-    date_pat =  re.compile(r'^(\d{1,2})(/|-)(\d{1,2})(/|-)(\d{2,4})$')
-    tokens = filter(lambda x: not date_pat.match(x), tokens)
-    #use stemmer
-    lemmatized_tokens = map(lambda x: stemmer.stem(x), tokens)
-    #filter out empty tokens and stopwords
-    lemmatized_tokens = filter(lambda x: x and x.strip() not in stop_en, lemmatized_tokens)
-
-    x = ' '.join(lemmatized_tokens)
-    return x
-```
-Since LDA uses word counts vector instead TF-IDF vector, function CountVectorizer from sklearn was used. 
-```python
-count_vectorizer = CountVectorizer(analyzer='word', max_df=0.95, min_df=10) 
-```
-##Topic modeling
+## Topic modeling
 After preprocessing, it is time to do the topic modeling. Python package gensim is used to achieve this process. For each document, we will get the probabilities of each topics within this document. Because topic modeling is an unsupervised learning process, the most difficult part is to decide the number of topics.
 
-### visulizing the topics
-One way to decide the number of topics is to visulize it. There is a alogrithm called t-Distributed Stochastic Neighbor Embedding (t-SNE) (https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) can be applied to this case. 
-t-SNE is usually used to visulize high dimensional data. The idea of this algrithm is to find a distance in a two dimensional space based on the distance between two objects calculated by a specific metric, such as cosine-similarity. In this case, I used Jensen-Shannon divergence as the distance. As mentioned above, the assumption of LDA is that one documents is a distribution of topics. Jensen-Shannon divergence (JSD) is a metric that can be used to calculate the distance (similarity) of two distributions (https://en.wikipedia.org/wiki/Jensen–Shannon_divergence)
-By giving different number of topics to the model, I can visulize the distance between the topics and check if all the topics are well seperated. In python, there is a package called gensimvis (https://github.com/bmabey/pyLDAvis) can do the work for me. The metric used in this package is also JDS and the visulization is made by D3.
-The plot below shows the distance between topics in the case of 10 topics. (the names of the topics were added manually)
+### Choosing the number of topics
+One of the popular method of choosing the number of topics is based on the perplexity. Perplexity (https://en.wikipedia.org/wiki/Perplexity) is taken from information theory and measures how well a probability distribution predicts an observed sample. The smaller the perplexity, the better the model.
+
+In this project, I splited the documents into training and testing sets. Then I train the model with different number of topics and calculated the perplexity on the test set. Usually the perlexity gets smaller with more topics and we need to find the balance between number of topics and perplexity: find the lbow point. Unfortunately, as shown below, I didn't see the lbow point even the number of topics went to 200. 
+
+![_config.yml]({{ site.baseurl }}/images/plot1.png)
+
+As the method of using perlexity was not useful for this project, I have to manully check the topics. Actually, in my opinion, there is no correct answer of how many topics there are. Several small topics can be grouped into a bigger topic and a big topic can be seperated into several small topics. For example, the topic of sports can be seperated into football and baseball.
+In this project, I tried to choose the number of topics so that all the topics talked about very different things.
+
+In python, there is a package called gensimvis (https://github.com/bmabey/pyLDAvis) which helps us to evaluate the topics very easily. This packges allows us to visualize the topics in a 2D plane. The distance between the topics is calculated based on the Jensen-Shannon divergence distance metric. As mentioned above, the assumption of LDA is that one topic is a distribution of terms. Jensen-Shannon divergence (JSD) is a metric that can be used to calculate the distance of two distributions. (https://en.wikipedia.org/wiki/Jensen–Shannon_divergence)
+This package also has a nice interactive chart that shows the top 30 terms in each topic.
+
+With the help of gensimvis and after trying different number of topics with different word-filtering parameters, I finally chose the number of topics to be 10. The 2D plot of the topics with gensimvis were shown below.
 
 ![_config.yml]({{ site.baseurl }}/images/plot2.png)
 
-Actually, in my opinion, there is no correct answer of how many topics there are. When we look at an article in different level (zoom in, zoom out), we have different decisions. So in this case, I chose 10 topics.
-The plot below shows the network of the topics and the top 10 words that are mostly likely show up in each topic.
+The topics were:
+Art
+Music
+Medical
+Technology
+Football
+Government
+Baseball
+Family
+Finance
+Crime
+
+### Word cloud
+Word cloud is a nice way to look at the words in topics. In word cloud, a word with higher probability has bigger size.
+The plot below shows the words of 3 topics with the top 30 words using word cloud.
 
 ![_config.yml]({{ site.baseurl }}/images/plot3.png)
 
-```python
-import networkx as nx
-def graph_terms_to_topics(lda, num_terms=10):
-    t = ['tech', 'baseball','market','health','football','crime','art','government','food','finance']
-    # create a new graph and size it
-    G = nx.Graph()
-    plt.figure(figsize=(16,16))
+### Topic-word network
+We can also visualize the network of topics and words. From the network we can see how different topics connect with each other with common words. The network below shows the topics with top 10 words.
 
-    for i in range(0, lda.num_topics):
-        topicLabel = t[i]
-        terms = [term for term, val in lda.show_topic(i, num_terms+1)]
-        for term in terms:
-            G.add_edge(topicLabel, term, edge_color='red')
-    
-    pos = nx.spring_layout(G)
-    
-    g = G.subgraph([topic for topic, _ in pos.items() if topic in t])
-    nx.draw_networkx_labels(g, pos, font_size=20, font_color='r')
-    g = G.subgraph([term for term, _ in pos.items() if str(term) not in t])
-    nx.draw_networkx_labels(g, pos, font_size=12, font_color='orange')
-
-    nx.draw_networkx_edges(G, pos, edgelist=G.edges(), alpha=0.3)
-
-    plt.axis('off')
-    plt.show()
-
-graph_terms_to_topics(lda, num_terms=10)
-```
+![_config.yml]({{ site.baseurl }}/images/plot3.png)
 
 ## Topic evolution
-After deciding the topics, it is time to study the evolution of topics vs. time. Keeping in mind that each document has more than one topics, I didn't assign the articles to one topic that has the highest probability. Instead, I considered the contribution of this article to all the topics by getting the probabilities of all the topics in this article. The plot below shows the evolution of four topics. 
-The topics about football and baseball show very clear seasonal change. The topic about tech and tech companies kept a very high level because San Francisco has a lot of tech companies.
+After deciding the topics, it is time to study the evolution of topics vs. time. Keeping in mind that each document has more than one topics, I didn't assign the articles to one topic that has the highest probability. Instead, I considered the contribution of this article to all the topics by getting the probabilities of all the topics in this article. The plot below shows the evolution of three topics. 
+The topics about baseball show very clear seasonal change. The topic about technology kept a very high level because San Francisco has a lot of tech companies.
 
 ![_config.yml]({{ site.baseurl }}/images/plot4.png)
 
-##Future
-As mentioned earlier, LDA has the most protential to achieve dynametic (real-time) topic modeling. In the future, it would be nice to update the database everyday so that we can keep tracking the topic changes everyday. And besides New York Times, other news resources can be used.
+## Conclusion
+Topic modeling by computer itself is not an easy task. In this project, there was still a lot of manual work involved, especially choosing the number of topics. If the topics doesn't change, it is ok to train the documents once, find the right number of topics and when a new document comes, just find the topic distribution using the trained model. But if we need to abandan old topics and find new topics as the time goes, we must find a good way that allows computers to decide the number of topics automatically.
