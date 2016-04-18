@@ -19,12 +19,12 @@ By doing LDA analysis, we will be able to get a probability distribution of topi
 ## Data source
 The data of this project came from the New York Times API. With time range 2013 to 2015 and search query of San Francisco, about 10300 news articles were obtained.
 Please check the ipython notebook for the code of getting the data 
-[a alink](https://github.com/RuiChang123/Natural_language_processing_project/blob/master/NLP_project.ipynb)
+[https://github.com/RuiChang123/Natural_language_processing_project/blob/master/NLP_project.ipynb](https://github.com/RuiChang123/Natural_language_processing_project/blob/master/NLP_project.ipynb)
 
 ## Preprocessing
 Preprocessing is a very important part of topic modeling. In this project, preprocessing includes tokenizing, filtering numbers and date, filtering stop words and stemming. I also started with filtering words in more than 75% or less than 10 of the documents.
 During the process of training the model, stop words were updated and different word-filtering parameters were tested.
-The code for token processing is also in the ipython notebook
+The code for token processing is also in the [ipython notebook](https://github.com/RuiChang123/Natural_language_processing_project/blob/master/NLP_project.ipynb)
 
 ## Topic modeling
 After preprocessing, it is time to do the topic modeling. Python package gensim is used to achieve this process. For each document, we will get the probabilities of each topics within this document. Because topic modeling is an unsupervised learning process, the most difficult part is to decide the number of topics.
