@@ -45,17 +45,17 @@ With the help of gensimvis and after trying different number of topics with diff
 
 ![_config.yml]({{ site.baseurl }}/images/plot2.png)
 
-The topics were:
-Art;                                 
-Music;
-Medical;
-Technology;
-Football;
-Government;
-Baseball;
-Family;
-Finance;
-Crime
+The topics were: 
+Art                               
+Music 
+Medical 
+Technology 
+Football 
+Government 
+Baseball 
+Family 
+Finance 
+Crime 
 
 ### Word cloud
 Word cloud is a nice way to look at the words in topics. In word cloud, a word with higher probability has bigger size.
