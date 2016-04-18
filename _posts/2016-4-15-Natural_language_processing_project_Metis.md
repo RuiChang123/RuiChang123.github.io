@@ -3,7 +3,7 @@ layout: post
 title: Topic modeling of San Francisco
 ---
 
-## Motviation
+## Motivation
 News is very important. A lot of important decisions are made based on the latest news. With the technology today, we are able to access all kinds of news resource or social media, such as Twitter, SFGate, New York Times, very easily. But the problem is it becomes very unlikely that a person can read all the news everyday in a limited amount of time. And this is why we need machine learning to help us to do the work.
 
 In this project, I am trying to use topic modeling to capture the evolution of news topics in San Francisco from 2013 to 2015.
