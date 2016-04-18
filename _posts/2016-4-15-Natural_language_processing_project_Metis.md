@@ -29,15 +29,8 @@ The code for token processing is also in the ipython notebook
 After preprocessing, it is time to do the topic modeling. Python package gensim is used to achieve this process. For each document, we will get the probabilities of each topics within this document. Because topic modeling is an unsupervised learning process, the most difficult part is to decide the number of topics.
 
 ### Choosing the number of topics
-One of the popular method of choosing the number of topics is based on the perplexity. Perplexity (https://en.wikipedia.org/wiki/Perplexity) is taken from information theory and measures how well a probability distribution predicts an observed sample. The smaller the perplexity, the better the model.
-
-In this project, I splited the documents into training and testing sets. Then I train the model with different number of topics and calculated the perplexity on the test set. Usually the perlexity gets smaller with more topics and we need to find the balance between number of topics and perplexity: find the lbow point. Unfortunately, as shown below, I didn't see the lbow point even the number of topics went to 200. 
-
-![_config.yml]({{ site.baseurl }}/images/plot1.png)
-
-As the method of using perlexity was not useful for this project, I have to manully check the topics. Actually, in my opinion, there is no correct answer of how many topics there are. Several small topics can be grouped into a bigger topic and a big topic can be seperated into several small topics. For example, the topic of sports can be seperated into football and baseball.
-In this project, I tried to choose the number of topics so that all the topics talked about very different things.
-
+Actually, in my opinion, there is no correct answer of how many topics there are. Several small topics can be grouped into a bigger topic and a big topic can be seperated into several small topics. For example, the topic of sports can be seperated into football and baseball (like zoom in, zoom out). How do we choose the number of objects totally dependents on the purpose of the project.
+In this project, I tried to choose the number of topics so that each topic represents a quite different as each other.
 In python, there is a package called gensimvis (https://github.com/bmabey/pyLDAvis) which helps us to evaluate the topics very easily. This packges allows us to visualize the topics in a 2D plane. The distance between the topics is calculated based on the Jensen-Shannon divergence distance metric. As mentioned above, the assumption of LDA is that one topic is a distribution of terms. Jensen-Shannon divergence (JSD) is a metric that can be used to calculate the distance of two distributions. (https://en.wikipedia.org/wiki/Jensen–Shannon_divergence)
 This package also has a nice interactive chart that shows the top 30 terms in each topic.
 
