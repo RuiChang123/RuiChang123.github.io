@@ -66,13 +66,13 @@ The plot below shows the words of 3 topics with the top 30 words using word clou
 ### Topic-word network
 We can also visualize the network of topics and words. From the network we can see how different topics connect with each other with common words. The network below shows the topics with top 10 words.
 
-![_config.yml]({{ site.baseurl }}/images/plot3.png)
+![_config.yml]({{ site.baseurl }}/images/plot4.png)
 
 ## Topic evolution
 After deciding the topics, it is time to study the evolution of topics vs. time. Keeping in mind that each document has more than one topics, I didn't assign the articles to one topic that has the highest probability. Instead, I considered the contribution of this article to all the topics by getting the probabilities of all the topics in this article. The plot below shows the evolution of three topics. 
 The topics about baseball show very clear seasonal change. The topic about technology kept a very high level because San Francisco has a lot of tech companies.
 
-![_config.yml]({{ site.baseurl }}/images/plot4.png)
+![_config.yml]({{ site.baseurl }}/images/plot5.png)
 
 ## Conclusion
 Topic modeling by computer itself is not an easy task. In this project, there was still a lot of manual work involved, especially choosing the number of topics. If the topics doesn't change, it is ok to train the documents once, find the right number of topics and when a new document comes, just find the topic distribution using the trained model. But if we need to abandan old topics and find new topics as the time goes, we must find a good way that allows computers to decide the number of topics automatically.
