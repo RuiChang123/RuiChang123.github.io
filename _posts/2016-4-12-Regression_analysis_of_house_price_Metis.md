@@ -10,12 +10,12 @@ It is very important to know the price of houses with a specific set of features
 This project is trying to estimate house prices based on the features, using publicly available data.
 
 ## Data source
-House sales record: http://www.sfgate.com/webdb/homesales/
+House sales record: [http://www.sfgate.com/webdb/homesales/](http://www.sfgate.com/webdb/homesales/)
 
 House features: Zillow API. Including Finished square foot, Lot square foot, Number of bedrooms, bathrooms, total rooms, Built year, House type (single family house, condo…)
 and Neighborhood.
 
-S&P/Case-Shiller house price index: https://research.stlouisfed.org/fred2/series/SFXRSA
+S&P/Case-Shiller house price index: [https://research.stlouisfed.org/fred2/series/SFXRSA](https://research.stlouisfed.org/fred2/series/SFXRSA)
 
 ### Web scraping of rendered webpage
 The house sales record from sfgate is a rendered webpage. This means I can't get the data by using the method I usually use for web scraping.
