@@ -12,11 +12,11 @@ This project is trying to estimate house prices based on the features using publ
 ## Data source
 House sales record: [http://www.sfgate.com/webdb/homesales/](http://www.sfgate.com/webdb/homesales/)
 The house sales record was scrapped from sfgate, which is a rendered webpage.
-For the code, please see []
+For the code, please see [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/scrape_sfgate.py](https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/scrape_sfgate.py)
 
 House features: Zillow API. Including Finished square foot, Lot square foot, Number of bedrooms, bathrooms, total rooms, Built year, House type (single family house, condo…)
 and Neighborhood.
-The code is shown []
+The code is shown [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](ipython notebook)
 
 S&P/Case-Shiller house price index: [https://research.stlouisfed.org/fred2/series/SFXRSA](https://research.stlouisfed.org/fred2/series/SFXRSA)
 
@@ -67,10 +67,12 @@ The important features for single family houses and condos are shown as below:
 
 As we can see, beside the size of the houses location (neighborhood) information is really important for single family homes and condos, especially for single family homes.
 
+For all the analysis process, please see [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](ipython notebook)
+
 ## Web application
 After training the model, I made a website application that we can use to get the estimation of the house prices based on the features.
 Since the model I chose is RandomForest Regression. I needed to use Flask to connect my model, which was implemented by python, with html file.
-The code for the html script and python script is shown in the file [], []
+The code for the html script and python script is shown in the file [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/house.html](house.html), [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/predictor.py](predictor.py)
 Since I don't have a server to host the website (AWS is not free for me anymore), The pictures below are just a simple demonstration of how it works.
 After entering the features, we will get the estimated price from the model and a price range from the history sales record.
 The web application will also send a API request to Zillow to get the three similiar houses that are sold recently and return the pics, addresses, sold dates and sold prices.
