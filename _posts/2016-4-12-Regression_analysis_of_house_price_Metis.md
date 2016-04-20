@@ -32,6 +32,8 @@ trend as the house price index.
 Unfortunately, The house sales record I got was till Feb, 2016. but the house price index was delayed, only till Jan, 2016.
 So a simple time series analysis using ARMA (Autoregression moving average) was made in order extend the house price index to Feb, 2016.
 
+![_config.yml]({{ site.baseurl }}/images/plot26.png)
+
 ARMA is a very basic time series method, it is not a good idea to use it to forecast the house price in the future (after a year or so). But for just one step ahead prediction, it gives a very good result.
 The time series analysis was done by R.
 
