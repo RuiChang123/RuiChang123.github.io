@@ -36,6 +36,7 @@ ARMA is a very basic time series method, it is not a good idea to use it to fore
 The time series analysis was done by R.
 
 ## Preprocessing of the data
+
 ### Get rid of the outliers
 The first step of the analysis was to get rid of the outliers, which included: price per sqft bigger than 5000, finishedsqft bigger than 6000 and lot sqft bigger than 80000. The numbers were chosen by checking the histograms of those features.
 
