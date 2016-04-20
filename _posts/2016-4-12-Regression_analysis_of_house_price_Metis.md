@@ -68,7 +68,16 @@ The important features for single family houses and condos are shown as below:
 As we can see, beside the size of the houses location (neighborhood) information is really important for single family homes and condos, especially for single family homes.
 
 ## Web application
+After training the model, I made a website application that we can use to get the estimation of the house prices based on the features.
+Since the model I chose is RandomForest Regression. I needed to use Flask to connect my model, which was implemented by python, with html file.
+The code for the html script and python script is shown in the file [], []
+Since I don't have a server to host the website (AWS is not free for me anymore), The pictures below are just a simple demonstration of how it works.
+After entering the features, we will get the estimated price from the model and a price range from the history sales record.
+The web application will also send a API request to Zillow to get the three similiar houses that are sold recently and return the pics, addresses, sold dates and sold prices.
 
+![_config.yml]({{ site.baseurl }}/images/plot24.png)
+
+![_config.yml]({{ site.baseurl }}/images/plot25.png)
 
 ## Future
 It is obvious that some of the important features were not included in my model, such as kitchen, pool, style of the house.
