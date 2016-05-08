@@ -18,7 +18,8 @@ For the code, please see [https://github.com/RuiChang123/Regression_for_house_pr
 
 House features: Zillow API. Including Finished square foot, Lot square foot, Number of bedrooms, bathrooms, total rooms, Built year, House type (single family house, condo…) and Neighborhood.
 
-The code is shown [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](ipython notebook)
+The code is shown 
+[https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](ipython notebook)
 
 S&P/Case-Shiller house price index: [https://research.stlouisfed.org/fred2/series/SFXRSA](https://research.stlouisfed.org/fred2/series/SFXRSA)
 
