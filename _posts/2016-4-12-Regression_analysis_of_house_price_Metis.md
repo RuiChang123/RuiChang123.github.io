@@ -19,7 +19,7 @@ For the code, please see [https://github.com/RuiChang123/Regression_for_house_pr
 House features: Zillow API. Including Finished square foot, Lot square foot, Number of bedrooms, bathrooms, total rooms, Built year, House type (single family house, condo…) and Neighborhood.
 
 The code is shown 
-[https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](ipython notebook)
+[https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb)
 
 S&P/Case-Shiller house price index: [https://research.stlouisfed.org/fred2/series/SFXRSA](https://research.stlouisfed.org/fred2/series/SFXRSA)
 
@@ -76,7 +76,7 @@ The important features for single family houses and condos are shown as below:
 
 As we can see, beside the size of the houses location (neighborhood) information is really important for single family homes and condos, especially for single family homes.
 
-For all the analysis process, please see [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](ipython notebook)
+For all the analysis process, please see [https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb](https://github.com/RuiChang123/Regression_for_house_price_estimation/blob/master/linear_regression_house_price.ipynb)
 
 ## Web application
 After training the model, I made a website application that we can use to get the estimation of the house prices based on the features.
